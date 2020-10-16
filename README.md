@@ -1,2 +1,19 @@
-# Blog-Vue3-antd-admin
-博客后台管理界面，vue3+adtd
+# blog-vue3-antd-admin
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
