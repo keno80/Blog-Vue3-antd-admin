@@ -1,7 +1,7 @@
 <template>
   <div>
-    <a-modal v-model:visible="visible" title="文章编辑器" @ok="addNewArticle" width="1200px" okText="添加文章" cancelText="取消添加"
-             :confirm-loading="loading">
+    <a-modal v-model:visible="visible" title="文章编辑器" @ok="doRequest" @cancel="closeModal" width="1200px"
+             okText="确定" cancelText="取消" :confirm-loading="loading">
       <div class="input_style">
         <a-input-group compact>
           <a-button type="primary">
@@ -33,7 +33,6 @@
             mode="multiple"
             style="width: 42%;margin-left: 20px; margin-right: 25px"
             placeholder="请选择文章标签"
-            @change="tagsChange"
         >
           <a-select-option v-for="(item, index) in tagsOptions" :key="item">
             {{ item }}
@@ -52,14 +51,16 @@
 </template>
 
 <script>
-import {reactive, toRefs} from 'vue'
+import {reactive, toRefs, onBeforeUnmount, ref} from 'vue'
 
 export default {
   name: "MdEditor",
   props: {
+    editArticle: Object,
     visible: {
       type: Boolean,
-      required: true
+      required: true,
+      default: false
     },
     loading: {
       type: Boolean,
@@ -82,21 +83,39 @@ export default {
       }
     })
 
-    function tagsChange(value) {
-      data.newArticle.tags = JSON.stringify(value)
+    data.newArticle = {...props.editArticle}
+    const apiOption = ref('new')
+    props.editArticle.tags ? data.originTags = props.editArticle.tags : data.originTags = []
+    Object.keys(props.editArticle).length > 0 ? apiOption.value = 'edit' : apiOption.value = 'new'
+
+    function doRequest() {
+      data.newArticle.tags = JSON.stringify(data.originTags)
+      apiOption.value === 'new' ? context.emit('add', data.newArticle) : context.emit('edit', data.newArticle)
     }
 
-    function addNewArticle() {
-      context.emit('add', data.newArticle)
+    function closeModal() {
+      context.emit('closeModal')
     }
+
+    onBeforeUnmount(() => {
+      data.newArticle = {
+        title: '',
+        description: '',
+        type: '',
+        tags: [],
+        content: '',
+        introduce: '',
+        isTop: 0
+      }
+    })
 
     const refData = toRefs(data)
     return {
       ...refData,
-      tagsChange,
-      addNewArticle
+      doRequest,
+      closeModal
     }
-  }
+  },
 }
 </script>
 

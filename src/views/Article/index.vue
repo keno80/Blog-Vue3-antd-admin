@@ -24,7 +24,7 @@
           <a-tag
               v-for="tag in tags"
               :key="tag"
-              :color="tag === 'Vue' ? 'cyan' : tag.length > 3 ? 'pink' : 'blue'"
+              :color="tag === 'Vue' ? 'cyan' : tag === 'Node' ? 'pink' : tag === 'React' ? 'orange' : 'green'"
           >
             {{ tag }}
           </a-tag>
@@ -40,13 +40,14 @@
         <template v-slot:action="{ text }">
           <a-button type="primary" v-if="text.isTop === 0" @click="upArticle(text)">置顶</a-button>
           <a-button type="danger" v-else-if="text.isTop === 1" @click="upArticle(text)">去顶</a-button>
-          <a-button type="primary" style="margin: 0 8px">编辑</a-button>
+          <a-button type="primary" style="margin: 0 8px" @click="editArticle(text)">编辑</a-button>
           <a-button type="danger" @click="deleteArticle(text.article_id)">删除</a-button>
         </template>
       </a-table>
     </div>
 
-    <md-editor :visible="editorVisible" @add="add" :loading="editorLoading"/>
+    <md-editor :visible="editorVisible" @add="add" @closeModal="addArticle" :loading="editorLoading" @edit="edit"
+               :editArticle="article" v-if="editorVisible"/>
   </div>
 </template>
 
@@ -130,7 +131,8 @@ export default {
       searchQuery: {
         title: '',
         type: ''
-      }
+      },
+      article: {}
     })
 
     function fetchData() {
@@ -146,6 +148,7 @@ export default {
     const editorLoading = ref(false)
 
     function addArticle() {
+      data.article = {}
       editorVisible.value = !editorVisible.value
     }
 
@@ -160,7 +163,25 @@ export default {
       })
     }
 
+    function editArticle(article) {
+      data.article = article
+      editorVisible.value = !editorVisible.value
+    }
+
+    function edit(val) {
+      console.log(val);
+      // editorLoading.value = true
+      articleApi.editArticle(val).then(res => {
+        // if (res.data.code === 200) {
+        //   editorLoading.value = false
+        //   editorVisible.value = false
+        //   fetchData()
+        // }
+      })
+    }
+
     const confirm = Modal.confirm
+
     function deleteArticle(id) {
       confirm({
         title: '确定要删除这篇文章吗？',
@@ -205,8 +226,10 @@ export default {
       editorVisible,
       editorLoading,
       add,
+      edit,
       deleteArticle,
-      upArticle
+      upArticle,
+      editArticle
     }
   },
   mounted() {

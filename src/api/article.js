@@ -20,6 +20,15 @@ export default {
     })
   },
 
+  //编辑文章
+  editArticle(data) {
+    return axios({
+      url: `${baseUrl}/article/edit`,
+      method: 'post',
+      data
+    })
+  },
+
   //删除文章
   delArticle(id) {
     return axios({
