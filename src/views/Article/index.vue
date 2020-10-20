@@ -70,13 +70,15 @@ export default {
           title: '文章ID',
           dataIndex: 'article_id',
           key: 'article_id',
-          align: 'center'
+          align: 'center',
+          width: '80px'
         },
         {
           title: '文章标题',
           dataIndex: 'title',
           key: 'title',
-          align: 'center'
+          align: 'center',
+          width: '200px'
         },
         {
           title: '文章描述',
@@ -88,7 +90,8 @@ export default {
           title: '已看次数',
           dataIndex: 'view_people',
           key: 'view_people',
-          align: 'center'
+          align: 'center',
+          width: '100px'
         },
         {
           title: '文章分类',
@@ -102,7 +105,8 @@ export default {
           dataIndex: 'tags',
           key: 'tags',
           slots: {customRender: 'tags'},
-          align: 'center'
+          align: 'center',
+          width: '160px'
         },
         {
           title: '是否置顶',
@@ -115,13 +119,15 @@ export default {
           title: '创建时间',
           dataIndex: 'create_time',
           key: 'create_time',
-          align: 'center'
+          align: 'center',
+          width: '160px'
         },
         {
           title: '操作',
           key: 'action',
           slots: {customRender: 'action'},
-          align: 'center'
+          align: 'center',
+          width: '240px'
         }
       ],
       list: [],
@@ -169,14 +175,15 @@ export default {
     }
 
     function edit(val) {
-      console.log(val);
-      // editorLoading.value = true
+      editorLoading.value = true
       articleApi.editArticle(val).then(res => {
-        // if (res.data.code === 200) {
-        //   editorLoading.value = false
-        //   editorVisible.value = false
-        //   fetchData()
-        // }
+        if (res.data.code === 200) {
+          editorLoading.value = false
+          editorVisible.value = false
+          fetchData()
+        } else {
+          editorLoading.value = false
+        }
       })
     }
 
