@@ -139,7 +139,7 @@ export default {
       data.articleLoading = true
       articleApi.articleList(data.page, data.size, data.searchQuery).then(res => {
         data.articleLoading = false
-        data.list = res.data.response
+        data.list = res.data.data
         console.log(res);
       })
     }
@@ -209,6 +209,7 @@ export default {
         cancelText: '取消',
         onOk() {
           articleApi.upArticle(data.article_id, data.isTop).then(res => {
+            console.log(res);
             if (res.data.code === 200) {
               Modal.destroyAll()
               fetchData()

@@ -1,4 +1,4 @@
-import {Avatar, Button, Col, Divider, Dropdown, Input, Layout, Menu, Modal,Pagination, Select, Radio, Row, Tag, Table} from "ant-design-vue";
+import {Avatar, Button, Col, Divider, Dropdown, Input, Layout, Menu ,Modal,Pagination, Select, Radio, Row, Tag, Table} from "ant-design-vue";
 
 const antd = {
   install: (app => {

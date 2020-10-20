@@ -13,7 +13,7 @@
           <template v-slot:overlay>
             <a-menu>
               <a-menu-item>
-                <a href="javascript:;">退出登录</a>
+                <a href="javascript:;" @click="logout">退出登录</a>
               </a-menu-item>
             </a-menu>
           </template>
@@ -26,7 +26,9 @@
 
 <script>
 import {BellOutlined} from '@ant-design/icons-vue'
+import {message} from 'ant-design-vue'
 import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 
 export default {
   name: "contentHeader",
@@ -35,8 +37,22 @@ export default {
   },
   setup() {
     const dropDownVisible = ref(false)
+
+    const router = useRouter()
+    function logout() {
+      message.success('即将退出登录', 2)
+      setTimeout(() => {
+        router.replace({
+          path: '/login'
+        }).then(() => {
+          sessionStorage.removeItem('blog_token')
+        })
+      }, 2000)
+    }
+
     return {
-      dropDownVisible
+      dropDownVisible,
+      logout
     }
   }
 }

@@ -7,7 +7,7 @@ export default {
     return axios({
       url: `${baseUrl}/article/list/${page}/${size}`,
       method: 'post',
-      data: searchQuery
+      data: searchQuery,
     })
   },
 

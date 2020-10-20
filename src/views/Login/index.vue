@@ -26,6 +26,7 @@
 
 <script>
 import {reactive} from 'vue'
+import {useRouter} from 'vue-router'
 import {UserOutlined, LockOutlined} from '@ant-design/icons-vue'
 import userApi from '@/api/user'
 
@@ -43,9 +44,13 @@ export default {
       }
     })
 
+    const router = useRouter()
     function login() {
       userApi.userLogin(data.userInfo).then(res => {
-        console.log(res);
+        if (res.data.code === 200) {
+          sessionStorage.setItem('blog_token', res.data.token)
+          router.replace('/')
+        }
       })
     }
 
