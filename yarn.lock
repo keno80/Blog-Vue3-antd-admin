@@ -936,10 +936,10 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
-"@kangc/v-md-editor@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npm.taobao.org/@kangc/v-md-editor/download/@kangc/v-md-editor-2.1.0.tgz#14f2646061f4bebb02268babdca9f15b72deb9df"
-  integrity sha1-FPJkYGH0vrsCJour3KnxW3Leud8=
+"@kangc/v-md-editor@^2.1.1-beta.0":
+  version "2.1.1-beta.0"
+  resolved "https://registry.npm.taobao.org/@kangc/v-md-editor/download/@kangc/v-md-editor-2.1.1-beta.0.tgz#a425e4fa11f02a893d282d1da9bade616af40563"
+  integrity sha1-pCXk+hHwKok9KC0dqbreYWr0BWM=
   dependencies:
     "@vuepress/markdown" "^1.4.1"
     codemirror "^5.52.2"
@@ -1484,11 +1484,11 @@
   integrity sha1-uw5G8VhafiibTuYGfcxaauYvHdE=
 
 "@vuepress/markdown@^1.4.1":
-  version "1.7.0"
-  resolved "https://registry.npm.taobao.org/@vuepress/markdown/download/@vuepress/markdown-1.7.0.tgz#5a866b9c06a0f64ece2d3fa5c6023be048249687"
-  integrity sha1-WoZrnAag9k7OLT+lxgI74Egkloc=
+  version "1.7.1"
+  resolved "https://registry.npm.taobao.org/@vuepress/markdown/download/@vuepress/markdown-1.7.1.tgz#56f60c2362fd82b8f2702eefa366c0d5b02fdcbd"
+  integrity sha1-VvYMI2L9grjycC7vo2bA1bAv3L0=
   dependencies:
-    "@vuepress/shared-utils" "1.7.0"
+    "@vuepress/shared-utils" "1.7.1"
     markdown-it "^8.4.1"
     markdown-it-anchor "^5.0.2"
     markdown-it-chain "^1.3.0"
@@ -1496,10 +1496,10 @@
     markdown-it-table-of-contents "^0.4.0"
     prismjs "^1.13.0"
 
-"@vuepress/shared-utils@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.npm.taobao.org/@vuepress/shared-utils/download/@vuepress/shared-utils-1.7.0.tgz#e04d587076960ecf932dffd784f24695dd3ec419"
-  integrity sha1-4E1YcHaWDs+TLf/XhPJGld0+xBk=
+"@vuepress/shared-utils@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.npm.taobao.org/@vuepress/shared-utils/download/@vuepress/shared-utils-1.7.1.tgz#028bc6003247bb4c60cdc96f231eecfb55e7b85d"
+  integrity sha1-AovGADJHu0xgzclvIx7s+1XnuF0=
   dependencies:
     chalk "^2.3.2"
     escape-html "^1.0.3"
@@ -5540,7 +5540,7 @@ markdown-it-table-of-contents@^0.4.0:
 
 markdown-it@^10.0.0:
   version "10.0.0"
-  resolved "https://registry.npm.taobao.org/markdown-it/download/markdown-it-10.0.0.tgz#abfc64f141b1722d663402044e43927f1f50a8dc"
+  resolved "https://registry.npm.taobao.org/markdown-it/download/markdown-it-10.0.0.tgz?cache=0&sync_timestamp=1603109995268&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmarkdown-it%2Fdownload%2Fmarkdown-it-10.0.0.tgz#abfc64f141b1722d663402044e43927f1f50a8dc"
   integrity sha1-q/xk8UGxci1mNAIETkOSfx9QqNw=
   dependencies:
     argparse "^1.0.7"
@@ -5551,7 +5551,7 @@ markdown-it@^10.0.0:
 
 markdown-it@^8.4.1:
   version "8.4.2"
-  resolved "https://registry.npm.taobao.org/markdown-it/download/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
+  resolved "https://registry.npm.taobao.org/markdown-it/download/markdown-it-8.4.2.tgz?cache=0&sync_timestamp=1603109995268&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmarkdown-it%2Fdownload%2Fmarkdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
   integrity sha1-OG+YmY3BWjdyKqdyIIT0Agvdm1Q=
   dependencies:
     argparse "^1.0.7"

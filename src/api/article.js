@@ -46,5 +46,13 @@ export default {
         isTop
       }
     })
+  },
+
+  articleImageUpload(data) {
+    return axios({
+      url: `${baseUrl}/image/upload`,
+      method: 'post',
+      data
+    })
   }
 }

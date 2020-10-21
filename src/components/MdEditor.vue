@@ -45,13 +45,15 @@
           <a-radio-button :value="1">置顶</a-radio-button>
         </a-radio-group>
       </div>
-      <v-md-editor v-model="newArticle.content" height="400px"></v-md-editor>
+      <v-md-editor v-model="newArticle.content" height="400px" :disabled-menus="[]"
+                   @upload-image="handleUploadImage"></v-md-editor>
     </a-modal>
   </div>
 </template>
 
 <script>
 import {reactive, toRefs, onBeforeUnmount, ref} from 'vue'
+import articleApi from "@/api/article";
 
 export default {
   name: "MdEditor",
@@ -97,6 +99,17 @@ export default {
       context.emit('closeModal')
     }
 
+    function handleUploadImage(event, insertImage,files) {
+      const formData = new FormData()
+      formData.append('file', files[0])
+      articleApi.articleImageUpload(formData).then(res => {
+        console.log(res);
+      })
+
+      console.log('click');
+      console.log(files);
+    }
+
     onBeforeUnmount(() => {
       data.newArticle = {
         title: '',
@@ -113,7 +126,8 @@ export default {
     return {
       ...refData,
       doRequest,
-      closeModal
+      closeModal,
+      handleUploadImage
     }
   },
 }
