@@ -165,6 +165,8 @@ export default {
           editorLoading.value = false
           editorVisible.value = false
           fetchData()
+        } else {
+          editorLoading.value = false
         }
       })
     }
