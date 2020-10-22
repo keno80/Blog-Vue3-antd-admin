@@ -103,11 +103,13 @@ export default {
       const formData = new FormData()
       formData.append('file', files[0])
       articleApi.articleImageUpload(formData).then(res => {
+        if (res.data.code === 200) {
+          insertImage({
+            url: res.data.data.fileUrl
+          })
+        }
         console.log(res);
       })
-
-      console.log('click');
-      console.log(files);
     }
 
     onBeforeUnmount(() => {
